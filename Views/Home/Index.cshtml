@@ -1,0 +1,57 @@
+﻿@model IEnumerable<BookingService.Models.HousePost>
+@{
+    ViewBag.Title = "Каталог домівок";
+}
+<h1>Подорожуйте з комфортом!</h1>
+<h2>Знаходьте та насолоджуйтесь: від маленьких кімнат до приватних будинків</h2>
+
+<form method="post">
+    <div class="input-group">
+
+
+
+        <input type="text" name="country" placeholder="Країна" class="form-control">
+        <input type="text" name="city" placeholder="Місто" class="form-control">
+
+        <input type="date" placeholder="Бажана дата" class="form-control">
+
+        <div class="input-group-append">
+            <button class="btn btn-outline-primary" type="submit">Знайти</button>
+        </div>
+    </div>
+</form>
+<hr style="height: 10px; border: 0; box-shadow: 0 10px 10px -10px #8c8b8b inset; ">
+@if (Model.Count()<1)
+    {
+<center>
+    <h1>По вашому запиту нічого не знайдено!</h1>
+
+    <h2>Спробуйте вести інші дані.</h2>
+</center>
+    }
+else{
+<div class="card-deck">
+    @foreach (var House in Model)
+    {
+
+    <div class="col-sm-8 col-md-5 col-lg-4">
+        <div class="card mb-4">
+
+            <img class="card-img-top" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/suburban-house-royalty-free-image-1584972559.jpg?crop=1.00xw:0.752xh;0,0.120xh&resize=1200:*" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@House.Title</h5>
+                <h4 class="card-subtitle">@House.Country @House.City</h4>
+                <p class="card-text">@House.Description</p>
+            </div>
+            <div class="card-footer">
+
+                <small class="text-muted">@House.Address</small>
+                <a class="btn btn-outline-primary"  asp-action="GetInfo" asp-route-id="@House.HousePostId" type="button">Переглянути</a>
+            </div>
+        </div>
+    </div>
+        }
+
+</div>
+}
+
