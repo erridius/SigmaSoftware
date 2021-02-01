@@ -1,0 +1,20 @@
+﻿@model BookingService.Models.HousePost
+
+
+<div style="float:right">
+    <img style="width:300px;height:300px;" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/suburban-house-royalty-free-image-1584972559.jpg?crop=1.00xw:0.752xh;0,0.120xh&resize=1200:*">
+</div>
+<div style="float:left">
+    @using (Html.BeginForm("AddHouse", "Home"))
+    {
+
+<input type="hidden" value="@Model.HousePostId" name="postId" />
+ <h1>@Model.Title</h1>
+ <h2>Опис помешкання: @Model.Description</h2>
+<h2>Вартість: @Model.Price</h2>
+<h2>Адреса: @Model.Address</h2>
+         <h2>Рейтинг: @Model.Score</h2>
+     <input type="submit" value=" Орендувати житло" class="btn btn-primary btn-lg">
+                            
+}
+</div>
