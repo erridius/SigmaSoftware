@@ -22,6 +22,11 @@ namespace BookingService.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult Access()
+        {
+            return View();
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel model)
@@ -35,7 +40,7 @@ namespace BookingService.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
-                ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+                ModelState.AddModelError("", "Не коректні логін або пароль");
             }
             return View(model);
         }

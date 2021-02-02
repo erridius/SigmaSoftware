@@ -1,0 +1,36 @@
+﻿@model IEnumerable<BookingService.Models.HousePost>
+<h1>Історія вашого орендування</h1>
+@if (Model.Count()<1)
+{
+<h3>Тут відображатиметься інформація про будинки, котрі ви орендували.</h3>
+<h4> Історія вашого орендування порожня!</h4>
+
+}
+else
+{
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">Заголовок</th>
+            <th scope="col">Адреса</th>
+            <th scope="col">Ціна</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{int i = 1;}
+        @foreach (var post in Model)
+        {
+        <tr>
+
+            <th scope="row">@i</th>
+            @{i++;
+            }
+            <td><a href="/Home/GetInfo/@post.HousePostId"> @post.Title</a></td>
+            <td>@post.Address</td>
+            <td>@post.Price</td>
+        </tr>
+        }
+    </tbody>
+</table>
+}

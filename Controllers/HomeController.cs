@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -32,15 +33,15 @@ namespace BookingService.Controllers
             return View(await houses.ToListAsync());
 
         }
-        [HttpGet]
+        [HttpPost]
         [Authorize]
-        public async Task<IActionResult> AddHouse(int post)
+        public async Task<IActionResult> AddHouse(int postId)
         {
 
             User user = await db.Users.FirstOrDefaultAsync(u => u.Mail == User.Identity.Name);
 
-            var house = await db.HousePosts.FirstOrDefaultAsync(u => u.HousePostId == post);
-            if (user != null)
+            var house = await db.HousePosts.FirstOrDefaultAsync(u => u.HousePostId == postId);
+            if (user != null && house != null)
             {
 
                 db.Journals.Add(new GuestJournal { HousePost = house, LodgerId = user });
@@ -49,7 +50,34 @@ namespace BookingService.Controllers
 
             }
 
-            return View("GetInfo", house);
+            return View("GetInfo",house);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> GetHistory()
+        {
+            User user = await db.Users.FirstOrDefaultAsync(u => u.Mail == User.Identity.Name);
+            var userHistoryList = db.Journals.Where(j => j.LodgerId.Id == user.Id).Select(h => h.HousePost).ToList();
+          
+            return View("GetHistory",userHistoryList);
+        }
+
+        [HttpGet]
+        [Authorize]
+        //TO DO Action for create new house post
+        public async Task<IActionResult> AddNewHousePost(HousePost model)
+        {
+
+            return View();
+        }
+       
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> MyHouses()
+        {
+            User user = await db.Users.FirstOrDefaultAsync(u => u.Mail == User.Identity.Name);
+            return View(db.HousePosts.Where(x=>x.Title.Length>1).ToList());
         }
         public async Task<IActionResult> GetInfo(int? id)
         {
