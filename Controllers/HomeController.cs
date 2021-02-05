@@ -63,21 +63,29 @@ namespace BookingService.Controllers
             return View("GetHistory",userHistoryList);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Authorize]
         //TO DO Action for create new house post
         public async Task<IActionResult> AddNewHousePost(HousePost model)
         {
-
+            if (ModelState.IsValid)
+            {
+                
+            }
+                return View("Home");
+        }
+        public async Task<IActionResult> AddNewHouse()
+        {
             return View();
         }
-       
-        [HttpGet]
+
+         [HttpGet]
         [Authorize]
         public async Task<IActionResult> MyHouses()
         {
             User user = await db.Users.FirstOrDefaultAsync(u => u.Mail == User.Identity.Name);
-            return View(db.HousePosts.Where(x=>x.Title.Length>1).ToList());
+            var OwnerHistoryList = db.HousePosts.Where(j => j.User == user).ToList();
+            return View(OwnerHistoryList);
         }
         public async Task<IActionResult> GetInfo(int? id)
         {

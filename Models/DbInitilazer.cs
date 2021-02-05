@@ -16,36 +16,37 @@ namespace BookingService.Models
                 new HousePost
                 {
 
-                    Title = "FZFSD",
-                    Description = "fdsdgfdsaf",
+                    Title = "TOP House",
+                    Description = "4-rooms",
                     Price = 24.30,
                     Country = "Ukraine",
                     City = "Kharkiv",
                     Address = "Heroiv Ukraine 22",
                     Status = false,
                     Score = 0
+                    
                 },
                 new HousePost
                 {
 
-                    Title = "FZFSD",
-                    Description = "fdsdgfdsaf",
+                    Title = "Medium house",
+                    Description = "New smart house in Kyiv",
                     Price = 24.30,
                     Country = "Ukraine",
-                    City = "Kharkiv",
-                    Address = "Heroiv Ukraine 22",
+                    City = "Kyiv",
+                    Address = "Heroiv Ukraine 12",
                     Status = false,
                     Score = 0
                 },
                  new HousePost
                  {
 
-                     Title = "FZFSD",
+                     Title = "Cool apartment in Russia",
                      Description = "fdsdgfdsaf",
                      Price = 24.30,
-                     Country = "Ukraine",
-                     City = "Kharkiv",
-                     Address = "Heroiv Ukraine 22",
+                     Country = "Russia",
+                     City = "Moscow",
+                     Address = "Pronicianskaya 11",
                      Status = false,
                      Score = 0
                  },
@@ -76,11 +77,11 @@ namespace BookingService.Models
                     new HousePost
                     {
 
-                        Title = "FZFSD",
+                        Title = "T-house",
                         Description = "fdsdgfdsaf",
                         Price = 24.30,
                         Country = "Ukraine",
-                        City = "Kharkiv",
+                        City = "Chernigiv",
                         Address = "Heroiv Ukraine 22",
                         Status = false,
                         Score = 0
@@ -92,8 +93,8 @@ namespace BookingService.Models
                          Description = "fdsdgfdsaf",
                          Price = 24.30,
                          Country = "Ukraine",
-                         City = "Kharkiv",
-                         Address = "Heroiv Ukraine 22",
+                         City = "Lviv",
+                         Address = "Trunskiwka 52",
                          Status = false,
                          Score = 0
                      }

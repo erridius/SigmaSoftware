@@ -67,7 +67,7 @@ namespace BookingService.Controllers
                     return RedirectToAction("Index", "Home");
                 }
                 else
-                    ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+                    ModelState.AddModelError("", "Не коректні логін або пароль");
             }
             return View(model);
         }
